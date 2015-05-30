@@ -1,0 +1,258 @@
+{
+  "node": "root",
+  "children": [
+    {
+      "node": "pipeline",
+      "children": [
+        {
+          "node": "pipeline side",
+          "children": [
+            {
+              "node": "simple command",
+              "children": [
+                {
+                  "node": "string",
+                  "children": [
+                    {
+                      "node": "unquoted",
+                      "children": [
+                        {
+                          "node": "a",
+                          "children": null
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node": "&",
+      "children": null
+    },
+    {
+      "node": "pipeline",
+      "children": [
+        {
+          "node": "pipeline side",
+          "children": [
+            {
+              "node": "simple command",
+              "children": [
+                {
+                  "node": "string",
+                  "children": [
+                    {
+                      "node": "unquoted",
+                      "children": [
+                        {
+                          "node": "b",
+                          "children": null
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node": "pipe",
+          "children": null
+        },
+        {
+          "node": "pipeline side",
+          "children": [
+            {
+              "node": "subshell",
+              "children": [
+                {
+                  "node": "pipeline",
+                  "children": [
+                    {
+                      "node": "pipeline side",
+                      "children": [
+                        {
+                          "node": "simple command",
+                          "children": [
+                            {
+                              "node": "string",
+                              "children": [
+                                {
+                                  "node": "unquoted",
+                                  "children": [
+                                    {
+                                      "node": "c",
+                                      "children": null
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "node": "redirection",
+                          "children": [
+                            {
+                              "node": ">",
+                              "children": null
+                            },
+                            {
+                              "node": "string",
+                              "children": [
+                                {
+                                  "node": "unquoted",
+                                  "children": [
+                                    {
+                                      "node": "d2",
+                                      "children": null
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "node": "redirection",
+                          "children": [
+                            {
+                              "node": ">",
+                              "children": [
+                                {
+                                  "node": "fd",
+                                  "children": [
+                                    {
+                                      "node": "1",
+                                      "children": null
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "node": "pipe &",
+                      "children": null
+                    },
+                    {
+                      "node": "pipeline side",
+                      "children": [
+                        {
+                          "node": "subshell",
+                          "children": [
+                            {
+                              "node": "pipeline",
+                              "children": [
+                                {
+                                  "node": "pipeline side",
+                                  "children": [
+                                    {
+                                      "node": "single command",
+                                      "children": [
+                                        {
+                                          "node": "string",
+                                          "children": [
+                                            {
+                                              "node": "unquoted",
+                                              "children": [
+                                                {
+                                                  "node": "e",
+                                                  "children": null
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "node": "redirection",
+                                      "children": [
+                                        {
+                                          "node": "fd",
+                                          "children": [
+                                            {
+                                              "node": "3",
+                                              "children": null
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "node": "<",
+                                          "children": [
+                                            {
+                                              "node": "string",
+                                              "children": [
+                                                {
+                                                  "node": "unquoted",
+                                                  "children": [
+                                                    {
+                                                      "node": "f",
+                                                      "children": null
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "node": "redirection",
+                                      "children": [
+                                        {
+                                          "node": ">",
+                                          "children": [
+                                            {
+                                              "node": "string",
+                                              "children": [
+                                                {
+                                                  "node": "unquoted",
+                                                  "children": [
+                                                    {
+                                                      "node": "g",
+                                                      "children": null
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node": ";",
+      "children": null
+    },
+    {
+    }
+  ]
+}

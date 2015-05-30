@@ -7,8 +7,37 @@ enum quotetypes {
 };
 
 enum contexts {
-  no_context = 0, com_sub, proc_sub, backticks, subshell, extglob, var_expn
+  no_context = 0, com_sub, proc_sub, backticks, subshell, extglob, var_expn, math
 };
+
+struct ASTleaf {
+  int nodetype;
+  char *content;
+  struct ASTleaf *sibling, *child, *parent;
+};
+
+enum ASTnodetypes {
+  root = 0,
+  pipeline, pipeline_side, pipe, pipe_ampersand,
+  single_quoted, double_quoted,// dollar_single, dollar_double,
+  simple_command, compound_command,
+  subshell, comsub, procsub,
+  redirection
+};
+
+int parser (char *line, struct ASTleaf *tree) {
+  while (*line) {
+    switch (*tree->parent) {
+      case root:
+      case subshell:
+      case compound_command:
+
+    }
+  }
+}
+
+void printAST (struct ASTleaf *tree, char *prestring) {
+}
 
 /* tokenizer
  *

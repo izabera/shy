@@ -1,2 +1,4 @@
 shy
 *.o
+*.swp
+a.out

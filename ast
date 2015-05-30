@@ -1,0 +1,201 @@
+grammar
+-------------------------------------------------------------------------------------------------------
+element
+- possible children
+
+root, compound command, subshell
+- pipeline
+- &
+- ;
+
+pipeline
+- pipeline side
+- pipe
+- pipe &
+
+string
+- unquoted
+- single quoted
+- double quoted
+- dollar single
+- dollar double
+
+unquoted, double quoted, dollar double
+- command substitution
+- process substitution <
+- process substitution >
+- variable
+- (actual string)
+
+single quoted, dollar single, variable
+- (actual string)
+
+pipeline side
+- subshell
+- simple command
+- compound command
+- redirection
+
+redirection
+- >
+- <
+- fd
+- string
+
+
+example
+-------------------------------------------------------------------------------------------------------
+a&b|(c>d2>&1|&(e 3<f>g));{ h>i 2>&1 j;k|l&}>m|"n$(o|p)q"'r$(s)t'u$("v|$("w|x"|$y< <(z))")
+
+(root)
+|-- (pipeline)
+|   `-- (pipeline side)
+|       `-- (simple command)
+|           `-- (string)
+|               `-- (unquoted)
+|                   `-- a
+|-- &
+|-- (pipeline)
+|   |-- (pipeline side)
+|   |   `-- (simple command)
+|   |       `-- (string)
+|   |           `-- (unquoted)
+|   |               `-- b
+|   |-- (pipe)
+|   `-- (pipeline side)
+|       `-- (subshell)
+|           `-- (pipeline)
+|               |-- (pipeline side)
+|               |   |-- (simple command)
+|               |   |   `-- (string)
+|               |   |       `-- (unquoted)
+|               |   |           `-- c
+|               |   |-- (redirection)
+|               |   |   |-- >
+|               |   |   `-- (string)
+|               |   |       `-- (unquoted)
+|               |   |           `-- d2
+|               |   `-- (redirection)
+|               |       |-- >
+|               |       `-- (fd)
+|               |           `-- 1
+|               |-- (pipe &)
+|               `-- (pipeline side)
+|                   `-- (subshell)
+|                       `-- (pipeline)
+|                           `-- (pipeline side)
+|                               |-- (simple command)
+|                               |   `-- (string)
+|                               |       `-- (unquoted)
+|                               |           `-- e
+|                               |-- (redirection)
+|                               |   |-- (fd)
+|                               |   |   `-- 3
+|                               |   |-- <
+|                               |   `-- (string)
+|                               |       `-- (unquoted)
+|                               |           `-- f
+|                               `-- (redirection)
+|                                   |-- >
+|                                   `-- (string)
+|                                       `-- (unquoted)
+|                                           `-- g
+|-- ;
+`-- (pipeline)
+    |-- (pipeline side)
+    |   |-- (compound command)
+    |   |   |-- (pipeline)
+    |   |   |   `-- (pipeline side)
+    |   |   |       |-- (simple command)
+    |   |   |       |   |-- (string)
+    |   |   |       |   |   `-- (unquoted)
+    |   |   |       |   |       `-- h
+    |   |   |       |   `-- (string)
+    |   |   |       |       `-- (unquoted)
+    |   |   |       |           `-- j
+    |   |   |       |-- (redirection)
+    |   |   |       |   |-- >
+    |   |   |       |   `-- (string)
+    |   |   |       |       `-- (unquoted)
+    |   |   |       |           `-- i
+    |   |   |       `-- (redirection)
+    |   |   |           |-- (fd)
+    |   |   |           |   `-- 2
+    |   |   |           |-- >
+    |   |   |           `-- (fd)
+    |   |   |               `-- 1
+    |   |   |-- ;
+    |   |   `-- (pipeline)
+    |   |       |-- (pipeline side)
+    |   |       |   `-- (simple command)
+    |   |       |       `-- (string)
+    |   |       |           `-- (unquoted)
+    |   |       |               `-- k
+    |   |       |-- (pipe)
+    |   |       `-- (pipeline side)
+    |   |           |-- (simple command)
+    |   |           |   `-- (string)
+    |   |           |       `-- (unquoted)
+    |   |           |           `-- l
+    |   |           `-- &
+    |   `-- (redirection)
+    |       |-- >
+    |       `-- (string)
+    |           `-- (unquoted)
+    |               `-- m
+    |-- (pipe)
+    `-- (pipeline side)
+        `-- (simple command)
+            `-- (string)
+                |-- (double quoted)
+                |   |-- n
+                |   |-- (command substitution)
+                |   |   `-- (pipeline)
+                |   |       |-- (pipeline side)
+                |   |       |   `-- (simple command)
+                |   |       |       `-- (string)
+                |   |       |           `-- (unquoted)
+                |   |       |               `-- o
+                |   |       |-- (pipe)
+                |   |       `-- (pipeline side)
+                |   |           `-- (simple command)
+                |   |               `-- (string)
+                |   |                   `-- (unquoted)
+                |   |                       `-- p
+                |   `-- q
+                |-- (single quoted)
+                |   `-- r$(s)t
+                `-- (unquoted)
+                    |-- u
+                    `-- (command substitution)
+                        `-- (pipeline)
+                            `-- (pipeline side)
+                                `-- (simple command)
+                                    `-- (string)
+                                        `-- (double quoted)
+                                            |-- v|
+                                            `-- (command substitution)
+                                                `-- (pipeline)
+                                                    |-- (pipeline side)
+                                                    |   `-- (simple command)
+                                                    |       `-- (string)
+                                                    |           `-- (double quoted)
+                                                    |               `-- w|x
+                                                    |-- (pipe)
+                                                    `-- (pipeline side)
+                                                        |-- (simple command)
+                                                        |   `-- (string)
+                                                        |       `-- (unquoted)
+                                                        |           `-- (variable)
+                                                        |               `-- y
+                                                        `-- (redirection)
+                                                            |-- <
+                                                            `-- (string)
+                                                                `-- (unquoted)
+                                                                    `-- (process substitution <)
+                                                                        `-- (pipeline)
+                                                                            `-- (pipeline side)
+                                                                                `-- (simple command)
+                                                                                    `-- (string)
+                                                                                        `-- (unquoted)
+                                                                                            `-- z
