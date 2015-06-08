@@ -1,2 +1,2 @@
 all:
-	gcc -Wall -std=c99 shy.c -o shy
+	gcc -Wall -O2 -pedantic -std=c99 -g shy.c -o shy
